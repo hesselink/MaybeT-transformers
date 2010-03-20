@@ -23,7 +23,10 @@ information is returned.  (If error information is required, see
 -}
 
 module Control.Monad.Maybe (
-  MaybeT(..)
+  MaybeT(..),
+
+  maybeT, fromMaybeT, fromMaybeTM
+
   -- * Limitations
   -- $Limitations
 
@@ -38,6 +41,7 @@ import Control.Monad.Fix()
 import Control.Monad.Reader
 import Control.Monad.State
 import Control.Monad.Writer
+import Data.Maybe
 
 -- | A monad transformer which adds Maybe semantics to an existing monad.
 newtype MaybeT m a = MaybeT { runMaybeT :: m (Maybe a) }
@@ -102,6 +106,18 @@ instance (MonadWriter w m) => MonadWriter w (MaybeT m) where
   -- I'm not sure this is useful, but it's the best I can do:
   pass m = MaybeT (runMaybeT m >>= maybe (return Nothing)
                                          (liftM Just . pass . return))
+
+-- | Lift a `Maybe` value to a `MaybeT`.
+maybeT :: Monad m => Maybe a -> MaybeT m a
+maybeT = MaybeT . return
+
+-- | Remove the `MaybeT` using a default value.
+fromMaybeT :: Monad m => a -> MaybeT m a -> m a
+fromMaybeT x = liftM (fromMaybe x) . runMaybeT
+
+-- | Remove the `MaybeT` using a monadic default value.
+fromMaybeTM :: Monad m => m a -> MaybeT m a -> m a
+fromMaybeTM x m = runMaybeT m >>= maybe x return
 
 {- $Limitations
 
