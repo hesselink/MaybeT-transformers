@@ -1,5 +1,6 @@
 Name:                MaybeT-transformers
 Version:             0.1
+Cabal-version:       >= 1.6
 Synopsis:            MaybeT monad transformer using transformers instead of mtl.
 Description:         Support for computations with failures. This
                      package is identical to MaybeT by Eric Kidd,
