@@ -1,0 +1,18 @@
+Name:                MaybeT-transformers
+Version:             0.1
+Synopsis:            MaybeT monad transformer using transformers instead of mtl.
+Description:         Support for computations with failures. This
+                     package is identical to MaybeT by Eric Kidd,
+                     except that it depends on transformers instead of
+                     mtl.
+License:             BSD3
+License-file:        LICENSE
+Category:            Control
+Author:              Erik Hesselink <hesselink@gmail.com>
+Maintainer:          Erik Hesselink <hesselink@gmail.com>
+Stability:           experimental
+Build-Type:          Simple
+Build-Depends:       base, 
+                     monads-fd == 0.0.*,
+                     transformers == 0.1.*
+Exposed-modules:     Control.Monad.Maybe
