@@ -13,7 +13,7 @@ Author:              Erik Hesselink <hesselink@gmail.com>
 Maintainer:          Erik Hesselink <hesselink@gmail.com>
 Stability:           experimental
 Build-Type:          Simple
-Build-Depends:       base, 
+Build-Depends:       base >= 3 && < 5, 
                      monads-fd == 0.0.*,
                      transformers == 0.1.*
 Exposed-modules:     Control.Monad.Maybe
