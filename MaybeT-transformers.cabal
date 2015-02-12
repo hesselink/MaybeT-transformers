@@ -1,5 +1,5 @@
 Name:                MaybeT-transformers
-Version:             0.1
+Version:             0.1.0.1
 Cabal-version:       >= 1.6
 Synopsis:            MaybeT monad transformer using transformers instead of mtl.
 Description:         Support for computations with failures. This
@@ -14,7 +14,13 @@ Author:              Erik Hesselink <hesselink@gmail.com>
 Maintainer:          Erik Hesselink <hesselink@gmail.com>
 Stability:           experimental
 Build-Type:          Simple
-Build-Depends:       base >= 3 && < 5, 
-                     monads-fd == 0.0.*,
-                     transformers == 0.1.*
-Exposed-modules:     Control.Monad.Maybe
+
+Source-Repository head
+  Type:             git
+  Location:         https://github.com/hesselink/MaybeT-transformers.git
+
+Library
+  Build-Depends:       base >= 3 && < 5,
+                       monads-fd == 0.0.*,
+                       transformers == 0.1.*
+  Exposed-modules:     Control.Monad.Maybe
